@@ -30,6 +30,15 @@ data TuringMachine = TuringMachine {
     instructions :: [Instruction] 
 } deriving (Show)
 
+-- Creates a new Turing Machine
+newTuringMachine :: Tape -> [Instruction] -> TuringMachine 
+newTuringMachine tape instructions = TuringMachine{
+        states = [Halt, StartState, A, B, C],
+        currentState = StartState,
+        tape = [Start] ++ tape ++ repeat Blank,
+        currentPosition = 0,
+        instructions = instructions
+    }
 
 -- This takes a machiene and list of insturctions and recursively looks for an instruction to apply
 findInstructionToApply :: TuringMachine -> [Instruction] -> Maybe Instruction
