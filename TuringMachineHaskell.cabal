@@ -52,7 +52,7 @@ executable TuringMachineHaskell
   main-is:             Main.hs
 
   -- Modules included in this executable, other than Main.
-  -- other-modules:
+  -- other-modules: Turing
 
   -- LANGUAGE extensions used by modules in this package.
   -- other-extensions:
@@ -61,8 +61,32 @@ executable TuringMachineHaskell
   build-depends:       base ^>=4.12.0.0
 
   -- Directories containing source files.
- hs-source-dirs: src
+  hs-source-dirs: src
 
   -- Base language which the package is written in.
   default-language:    Haskell2010
 
+library Turing
+  ghc-options: -Wall
+  build-depends:
+    base == 4.*
+  exposed-modules:     Turing
+  other-modules:
+  -- Directories containing source files.
+  hs-source-dirs:      src
+  default-language:    Haskell2010
+
+test-suite spec
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  hs-source-dirs:
+      testsuite/tests
+  ghc-options: -Wall
+  build-depends:
+      base ==4.*
+    , hspec ==2.*
+    , Turing
+  other-modules:
+      TuringSpec
+  default-language: Haskell2010
+  build-tool-depends: hspec-discover:hspec-discover == 2.*

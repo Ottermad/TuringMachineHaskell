@@ -1,11 +1,4 @@
-module Turing  
-   --  (
-   --      TuringMachine,
-   --      Instruction,
-   --      runMachine,
-   --      State
-   -- )
-where
+module Turing where
 
 -- This type represents a state in the machine
 data State = Halt | StartState | A | B | C deriving (Eq, Show)
